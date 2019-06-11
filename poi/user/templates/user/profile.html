@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>POI | Profile</title>
+{% endblock %}
+
+
+{% block body %}
+<section class="container-fluid col-xl-8 col-sm-2">
+<h1>profile</h1>
+<p>Username: {{ user }}</p>
+<p>Employee number: {{ employee_number }}</p>
+a form will go here so you can request help from the admin.
+maybe the email will be on display.
+</section>
+{% endblock %}
+

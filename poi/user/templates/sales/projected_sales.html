@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block nav_left %}
+{% endblock nav_left%}
+
+{% block nav_right %}
+{% endblock nav_right %}
+
+{% block body %}
+<style>
+table, th, td {
+	border: 1px solid black;
+
+}
+
+</style>
+
+<section class='container-fluid col-xl-8'>	
+
+  	<table width=100%>
+      <h1> Projected Sales</h1>
+  		<tbody>
+  			<tr>
+  				<th>Start date</th>
+  				<th>Monday</th>
+  				<th>Tuesday</th>
+  				<th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>
+          <th>Total</th>		
+  			</tr>
+        <tr>
+          {% for sales in sales_view %} {% for sum in projected_sales_sum.values %}
+  			  <td><a href='edit-projected-sales/{{ sales.id }}'>{{ sales.date_start }}</a></td>
+  			  <td>{{ sales.monday }}</td>
+  			  <td>{{ sales.tuesday }}</td>
+  			  <td>{{ sales.wednesday }}</td>
+  			  <td>{{ sales.thursday }}</td>
+          <td>{{ sales.friday }}</td>
+          <td>{{ sales.saturday }}</td>
+          <td>{{ sales.sunday }}</td> 
+          <td>{{ sum }}</td>
+        </tr>
+        {% endfor sales %} {% endfor sum %}
+  		</tbody>
+  	</table>	
+</section>
+
+{% endblock body %}

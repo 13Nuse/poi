@@ -1,0 +1,286 @@
+
+{% load static %}
+{% block head %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!--print style-->
+    <!--charts.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet"> 
+    <link rel="stylesheet" href="{% static 'user/css/resstyle.css' %}" type="text/css" />
+    
+{% endblock %}
+
+{% block title %}
+    <title>POI | Project Online Inventory</title>
+{% endblock %}    
+
+  </head>
+
+  <body>
+
+{% block header %}
+    <header class="container-fluid">
+      <h1>Project Online Inventory</h1>
+    </header>
+{% endblock %}
+
+{% if user.is_authenticated %}
+{% block navbar %}
+<navbar class="container-fluid">
+<div class="container-fluid">
+  <div class="navbar-wrapper">
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-light bg-light navbar-expand-sm navbar-inverse">
+          <div class="container-fluid">
+              <button type="button"
+                      class="navbar-toggler"
+                      data-toggle="collapse"
+                      data-target="#navbar"
+                      aria-expanded="false"
+                      aria-controls="navbar">
+
+                <span class="navbar-toggler-icon"></span>
+                <span class="sr-only">Toggle navigation</span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="dashboard">Dashboard<span class="sr-only">(current)</span></a>
+                  </li>
+
+                  <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle"
+                     href="#" id="navbarDropdown"
+                     role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                    Inventory
+                  </a>
+                  <div class="dropdown-menu justify-content-right"
+                        aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="inventory-overview">Inventory Overview</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Create/Review Inventory</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="inventory-adjustment">Create Inventory Adjustment</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Create/Adjust Recipe</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Update Storage Location</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Update Storage Sequence</a>
+                  </div>
+
+
+
+                  <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle"
+                     href="#" id="navbarDropdown"
+                     role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                    Sales
+                  </a>
+                  <div class="dropdown-menu justify-content-right"
+                        aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="projected-sales">Projected Sales</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Sales to date</a>
+                  </div>
+
+                  <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"
+                     href="#" id="navbarDropdown"
+                     role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                    Reports
+                  </a>
+                  <div class="dropdown-menu"
+                        aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Efficiencies</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">A v T</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Labor</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Extended Values</a>
+                  </div>
+
+                  <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle"
+                     href="#" id="navbarDropdown"
+                     role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                    Purchasing
+                  </a>
+                  <div class="dropdown-menu justify-content-right"
+                        aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Purchase by invoice</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Vender order</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Vender return</a>
+                  </div>
+
+                  <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle"
+                     href="employee" id="navbarDropdown"
+                     role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                    Employee
+                  </a>
+                  <div class="dropdown-menu justify-content-right"
+                        aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="view-employee">View Employees</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="create-employee">Create Employees</a>
+                  </div>
+
+                  <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle"
+                     href="{{ user }}" id="navbarDropdown"
+                     role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                    {{ user }}
+                  </a>
+                  <div class="dropdown-menu justify-content-right"
+                        aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="profile">Profile</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout">Log out</a>
+                  </div>
+                </li>
+         
+            </li>
+          </li>
+        </ul>
+    </div>
+</div>
+</nav>
+</div>
+</div>
+</div>
+</navbar>
+
+{% endblock %}
+{% endif %}
+
+    <div class="container-fluid">
+
+    <div class="row">
+
+{% if user.is_authenticated %}
+{% block nav_left %}
+
+        <aside class="col-sm-2 col-xs-push-8">
+          <h4 class="nav-title">
+            <b>Contents</b>
+          </h4>
+
+            <div class="nav-list">
+
+           <a href="dashboard"><img src="#" width="300"; height="300"; /><h4>Home</h4></a>
+            
+            <a href="#"><img src="#" width="300"; height="300"; /><h4>Inventory</h4></a>
+       
+            <a href="#"><img src="#" width="300"; height="300"; /><h4>Employees</h4></a>
+            
+            <a href="#"><img src="#" width="300"; height="300"; /><h4>Reports</h4></a>
+            
+            <a href="#"><img src="#" width="300"; height="300"; /><h4>Sales</h4></a>
+
+            </div>
+      
+        </aside>
+
+{% endblock %}
+{% endif %}
+
+{% block body %} 
+<section class="container-fluid col-xl-8 col-sm-2">      
+  <br>     
+  <div class="jumbotron">
+    <div align="center">
+
+      <a href="login"><button class="btn btn-primary" type="submit" name="button">login</button></a> 
+    
+    </div>
+  </div> 
+  <br>
+</section>
+{% endblock %}
+
+{% if user.is_authenticated %}
+{% block nav_right %}
+
+
+         <aside class="col-sm-2">
+            <h4 class="range-title">
+              <b>Dashboard</b>
+            </h4>
+            
+            <div class="range-list">
+
+              <a href="">
+                <img src="#" width="300"; height="300"; />
+                <h4>Food Sales</h4>
+              </a>    
+
+              <a href="">
+                <img src="#" width="300"; height="300"; />
+                <h4>Kitchen Efficiencies</h4>
+              </a>    
+              
+              <a href="">
+                <img src="#" width="300"; height="300"; />
+                <h4>Top 10</h4>
+              </a>    
+
+            </div>          
+
+         </aside>
+
+{% endblock %} 
+{% endif %}
+
+     </div>
+ </div>
+
+{% block footer %}
+
+    <footer class="navbar fixed-bottom navbar-dark bg-dark">
+
+        <a class="navbar-brand" href="#">&copy 2017 DogSteet</a>
+    </footer>
+    
+{% endblock %}
+
+  </body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+</html>

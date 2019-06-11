@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block body %}
+<style>
+table, th, td {
+	border: 1px solid black;
+}
+
+</style>
+
+<section class='container-fluid col-xl-8'>	
+
+<table style='width:100%' class='table-list'>
+  <tr>
+  	<th>#</th>
+	<th>Item</th>
+	<th>Sku</th>
+	<th>Case</th>
+	<th>Yield</th>
+	<th>Serving</th>
+	<th>Unit</th>
+	<th>Price</th>
+  </tr>
+{% for inventory in inventory_view %}
+  <tr>	
+  	<td>{{ inventory.id }}</td>
+	<td>{{ inventory.name }}</td>
+	<td>{{ inventory.sku }}</td>
+	<td>{{ inventory.case }}</td>
+	<td>{{ inventory.serving_yield }}</td>
+	<td>{{ inventory.serving_size }}</td>
+	<td>{{ inventory.unit }}</td>
+	<td>${{ inventory.price }}</td> 
+  </tr>
+	{% endfor %}
+</table>	
+</section>
+
+{% endblock %}

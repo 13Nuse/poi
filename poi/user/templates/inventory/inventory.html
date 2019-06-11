@@ -1,0 +1,17 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+
+{% block body %}
+<section class="container-fluid col-xl-8">
+<div align="center">
+<h4>INVENTORY</h4>
+
+<form method='post'>
+{{ form.as_table }}
+	</form>
+
+</div>
+</section>	
+
+{% endblock %}

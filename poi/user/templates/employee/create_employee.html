@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block body %}
+<style>
+table, th, td {
+	border: 1px solid black;
+
+}
+
+</style>
+
+<section class='container-fluid col-xl-8'>	
+<table style='width:100%' class='table-list'>
+  <tr>
+	<th>Employee</th>
+	<th>Data</th>
+	<th>Profile</th>
+  </tr>
+  <tr>
+  	<form method='post' action=''>{% csrf_token %}
+  	{{ form.as_table }}
+  	<input type='submit' value="Create Employee" />
+  	</form>
+  </tr>
+
+</table>	
+</section>
+
+{% endblock %}
+

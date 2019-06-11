@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block nav_left %}
+{% endblock%}
+
+{% block nav_right %}
+{% endblock %}
+
+{% block body %}
+<style>
+table, th, td {
+	border: 1px solid black;
+
+}
+
+</style>
+
+<section class='container-fluid col-sm-3 col-xl-12'>	
+    <table width=100%>
+      <h1> Edit Sales</h1>
+  		<tbody>
+  			<tr>
+  				<th>Start date</th>
+  				<th>Monday</th>
+  				<th>Tuesday</th>
+  				<th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>		
+  			</tr>
+        <tr>
+            <form method="post">{% csrf_token %}
+  			  <td>{{ form.date_start }}</td>
+  			  <td>{{ form.monday }}</td>
+  			  <td>{{ form.tuesday }}</td>
+  			  <td>{{ form.wednesday }}</td>
+  			  <td>{{ form.thursday }}</td>
+          <td>{{ form.friday }}</td>
+          <td>{{ form.saturday }}</td>
+          <td>{{ form.sunday }}</td>
+        </tr>
+        	<input type="submit" value="Save"></input>
+        </form>
+  		</tbody>
+  	</table>	
+</section>
+
+{% endblock %}

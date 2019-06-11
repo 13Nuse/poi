@@ -1,0 +1,131 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% if user.is_authenticated %}
+{% block title %}
+  <title>POI | Dashboard</title>
+{% endblock %}
+
+
+{% block body %}
+<style>
+table, th, td {
+	border: 1px solid black;
+
+}
+
+</style>
+<section class="col-xl-8 col-sm-12">
+<div>
+  <article>
+  	<table width=100%>
+  		<tbody>
+  			<tr><p>this is where graphs go, daily sales</p>
+  				<th>Metric</th>
+  				<th>Monday</th>
+  				<th>Tuesday</th>
+  				<th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>	
+
+          <canvas id="myChart" width="50" height="50"></canvas>
+<script>
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        datasets: [{
+            label: 'Dashboard',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+  			</tr>
+        <tr>
+          {% for sales in sales_view %}
+  			  <td>{{ sales.metric }}</td>
+  			  <td>{{ sales.monday }}</td>
+  			  <td>c</td>
+  			  <td>d</td>
+  			  <td>f</td>
+          <td>g</td>
+          <td>h</td>
+          <td>i</td>
+          {% endfor %}
+        </tr>
+  		</tbody>
+  	</table>
+  </article>
+</div>
+<div>
+  <article>
+    <table width=100%>
+      <tbody>
+        <p>This is where the Reminders and daily TODO will go</p>
+        <tr>
+        <th>Task</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+      <tr>
+          <td>a</td>
+          <td>b</td>
+          <td>c</td>
+      </tr>
+  </tbody>
+</table>
+
+  </article>
+</div>
+</section>
+
+{% endblock %}
+{% endif %}
+
+
+
+
+<!--
+<script>
+{% block jquery %}
+var endpoint = 'dashboard' # Hardcode
+
+create url endpoint off of a div tag
+
+{% endblock %}
+</script>
+
+{% block con %}
+{% endblock %}
+-->

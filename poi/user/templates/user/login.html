@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}
+  <title>POI | Login</title>
+{% endblock %}
+
+{% block body %}
+
+<section class="container-fluid col-xl-8 col-sm-2">
+  <br>
+  <div class="container-fluid">
+    <div align="center">
+      <h2>Please log into your account.</h2>
+      <form method="post"> 
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-default" type="submit" name="button">login</button></a> 
+      </form>
+    </div>
+  </div> 
+  <br>
+</section>
+
+
+{% endblock %}

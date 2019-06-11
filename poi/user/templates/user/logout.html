@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}
+  <title>POI | logout</title>
+{% endblock %}  
+
+{% block body %}
+
+<section class="container-fluid">
+	<br><br>
+	<div class="container-fluid">
+		<div align="center">
+			<h1><strong>Logged out.</strong></h1>
+			{% csrf_token %}
+			<article>
+			<h2>Click here to log back in.</h2>
+			<a href="login"><button class="btn btn-primary" type="submit" name="button">login</button></a>
+			</article>
+		</div>
+	</div>
+	<br><br>		
+</section>
+
+{% endblock %}
