@@ -13,7 +13,7 @@ table, th, td {
 	border: 1px solid black;
 
 }
-
+    
 </style>
 <section class="col-xl-8 col-sm-12">
 <div>
@@ -30,16 +30,18 @@ table, th, td {
           <th>Saturday</th>
           <th>Sunday</th>	
 
-          <canvas id="myChart" width="50" height="50"></canvas>
+          <canvas id="myChart" width="50%" height="50%"></canvas>
 <script>
 var ctx = document.getElementById("myChart").getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         datasets: [{
-            label: 'Dashboard',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'daily sales',
+            {% for sales in sales_view %}
+            data: [{{ sales.monday }}, {{ sales.tuesday }}, {{ sales.wednesday}}, {{ sales.thursday }}, {{ sales.friday }}, {{ sales.saturday }}, {{ sales.sunday }}],
+            {% endfor %}
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -73,7 +75,7 @@ var myChart = new Chart(ctx, {
 
   			</tr>
         <tr>
-          {% for sales in sales_view %}
+      
   			  <td>{{ sales.metric }}</td>
   			  <td>{{ sales.monday }}</td>
   			  <td>c</td>
@@ -82,7 +84,6 @@ var myChart = new Chart(ctx, {
           <td>g</td>
           <td>h</td>
           <td>i</td>
-          {% endfor %}
         </tr>
   		</tbody>
   	</table>

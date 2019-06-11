@@ -17,7 +17,10 @@ def base(request):
 
 @login_required
 def dashboard(request):
-    args = {'user': request.user}
+    sales_view = ForcastedSalesProfile.objects.all()
+    args = {'user': request.user,
+            'sales_view': sales_view,
+            }
     return render(request, 'user/dashboard.html', args)
 
 

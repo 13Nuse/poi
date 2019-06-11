@@ -154,6 +154,9 @@ class InventoryCountProfile(models.Model):
 
 
 class InventorySequence(models.Model):
+    """
+    adjusting items be reoredering the sequence of items ID/PK
+    """
     pass
 
 
@@ -210,6 +213,10 @@ class InventoryProfile(models.Model):
         return self.name
 
 
+class InventoryTotals(models.Model):
+    pass
+
+
 # Employee
 
 class EmployeeProfile(models.Model):
@@ -245,9 +252,6 @@ class ForcastedSalesProfile(models.Model):
     def get_total(self, total):
         return sum([self.total])
 
-    def __str__(self):
-        return self.first
-
 
 class ActualSalesProfile(models.Model):
     class Meta:
@@ -264,11 +268,13 @@ class ActualSalesProfile(models.Model):
     sunday = models.FloatField(default=0)
     total = models.FloatField(default=0)
 
-    def __str__(self):
-        return self.first
 
+class salestotals(models.Model):
+    forcast_total = models.ForeignKey(ForcastedSalesProfile, on_delete=models.CASCADE)
+    actual_total = models.ForeignKey(ActualSalesProfile, on_delete=models.CASCADE)
 
 # Purchasing
+
 
 class DistributorProfile(models.Model):
     pass
