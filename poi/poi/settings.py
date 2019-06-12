@@ -25,7 +25,7 @@ SECRET_KEY = 'spu&ie_k40kwsro5qn!7)$^4y-4wr4o6+z@$7*os5@#7cbp6w#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['poi2.herokuapp.com']
 
 
 # Application definition
