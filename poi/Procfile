@@ -1,1 +1,1 @@
-web: gunicorn poi.wsgi --log- file -
+web: gunicorn poi.wsgi --log-file -
