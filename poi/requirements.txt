@@ -2,7 +2,7 @@ atomicwrites==1.2.1
 attrs==18.2.0
 colorama==0.4.1
 cycler==0.10.0
-Django==2.2.2
+Django==2.2.27
 django-crispy-forms==1.7.2
 gunicorn==19.9.0
 kiwisolver==1.0.1
